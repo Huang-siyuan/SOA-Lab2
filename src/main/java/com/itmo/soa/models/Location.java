@@ -2,6 +2,11 @@ package com.itmo.soa.models;
 
 import lombok.*;
 
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+
+import static javax.xml.bind.annotation.XmlAccessType.FIELD;
+
 /**
  * @program: SOA-Lab2
  * @author: Siyuan
@@ -11,6 +16,8 @@ import lombok.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@XmlRootElement(name = "location")
+@XmlAccessorType(FIELD)
 public class Location {
     private int x;
     private float y;

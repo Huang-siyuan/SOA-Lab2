@@ -21,9 +21,9 @@ public interface RouteMapper {
     @Delete("DELETE FROM route WHERE id = #{id}")
     int deleteRouteById(int id);
 
-    @Select("select * from Route where distance = (select min(distance) from Route where from_id = #{from_id} and to_id = #{to_id})")
-    RouteDAO findShortestRoute(long fromId, long toId);
+    @Select("select * from Route where distance = (select min(distance) from Route where from_id = #{fromId} and to_id = #{toId}) limit 1")
+    RouteDAO findShortestRoute(int fromId, int toId);
 
-    @Select("select * from Route where distance = (select max(distance) from Route where from_id = #{from_id} and to_id = #{to_id})")
-    RouteDAO findLongestRoute(long fromId, long toId);
+    @Select("select * from Route where distance = (select max(distance) from Route where from_id = #{fromId} and to_id = #{toId}) limit 1")
+    RouteDAO findLongestRoute(int fromId, int toId);
 }
