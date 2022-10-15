@@ -23,12 +23,14 @@ public class SecondPartController {
     @GetMapping("/{id-from}/{id-to}/{shortest}")
     public Route findLongestOrShortestRoute(@PathVariable("id-from") int idFrom,
                           @PathVariable("id-to") int idTo,
-                          @PathVariable boolean shortest) {
+                          @PathVariable int shortest) {
         RouteDAO targetRouteDAO;
-        if (shortest) {
+        if (shortest == 1) {
             targetRouteDAO = navigatorService.findShortestRoute(idFrom, idTo);
-        } else {
+        } else if (shortest == 0) {
             targetRouteDAO = navigatorService.findLongestRoute(idFrom, idTo);
+        } else {
+            throw new IllegalArgumentException("The shortest parameter should be 0 or 1.");
         }
 
         return navigatorService.toRoute(targetRouteDAO);

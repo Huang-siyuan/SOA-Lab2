@@ -1,5 +1,13 @@
 spring:
-datasource:
-url: jdbc:postgresql://localhost:5432/soa
-username: postgres
-password: 123456
+  datasource:
+    url: jdbc:postgresql://localhost:5432/soa
+    username: postgres
+    password: 123456
+
+server:
+  port: 8080
+  ssl:
+    key-store: src/main/resources/server.keystore
+    key-store-password: helios
+    keyStoreType: PKCS12
+    keyAlias: tomcat
