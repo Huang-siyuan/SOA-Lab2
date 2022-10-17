@@ -18,4 +18,6 @@ public interface NavigatorService {
     Location toLocation(LocationDAO locationDAO);
 
     Coordinates toCoordinates(CoordinatesDAO coordinatesDAO);
+
+    RouteDAO getRouteById(int id);
 }

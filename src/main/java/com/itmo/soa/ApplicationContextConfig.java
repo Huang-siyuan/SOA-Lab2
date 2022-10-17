@@ -25,13 +25,6 @@ import javax.sql.DataSource;
 @MapperScan("com.itmo.soa.models.mappers")
 @EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class, MybatisAutoConfiguration.class})
 public class ApplicationContextConfig {
-    // You can set the environment variables in the run configuration
-    @Value("${POSTGRES_URL}")
-    private String postgresURL;
-    @Value("${POSTGRES_USER}")
-    private String postgresUser;
-    @Value("${POSTGRES_PASSWORD}")
-    private String postgresPassword;
 
     /**
      * @return RestTemplate
@@ -45,10 +38,12 @@ public class ApplicationContextConfig {
     @Bean
     public DataSource dataSource() {
         PGSimpleDataSource ds = new PGSimpleDataSource();
+        String postgresURL = "jdbc:postgresql://pg:5432/studs";
         ds.setUrl(postgresURL);
+        String postgresUser = "s273720";
         ds.setUser(postgresUser);
+        String postgresPassword = "UDU8hfjQjziKasms";
         ds.setPassword(postgresPassword);
-        ds.setSslMode("disable");
         return ds;
     }
 

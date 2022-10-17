@@ -13,6 +13,8 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>SOA-Lab2</name>
     <description>SOA-Lab2</description>
+    <packaging>war</packaging>
+
     <properties>
         <java.version>1.8</java.version>
     </properties>
@@ -24,6 +26,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
@@ -63,9 +71,16 @@
             <artifactId>postgresql</artifactId>
             <version>42.3.4</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <build>
+        <finalName>SOA-Lab2</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

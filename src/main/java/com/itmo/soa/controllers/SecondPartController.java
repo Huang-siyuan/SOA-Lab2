@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping(value = "/navigator/routes", produces = "application/xml")
+@RequestMapping(value = "/", produces = "application/xml")
 public class SecondPartController {
     private final NavigatorService navigatorService;
 
@@ -43,5 +43,17 @@ public class SecondPartController {
         RouteDAO targetRouteDAO = navigatorService.addRouteBetweenLocations(idFrom, idTo, distance);
 
         return navigatorService.toRoute(targetRouteDAO);
+    }
+
+    @GetMapping("/{id}")
+    public Route getRouteById(@PathVariable int id) {
+        RouteDAO targetRouteDAO = navigatorService.getRouteById(id);
+
+        return navigatorService.toRoute(targetRouteDAO);
+    }
+
+    @GetMapping("/test")
+    public String test() {
+        return "test";
     }
 }

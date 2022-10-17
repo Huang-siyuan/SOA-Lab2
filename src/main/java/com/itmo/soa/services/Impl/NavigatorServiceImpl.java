@@ -94,4 +94,11 @@ public class NavigatorServiceImpl implements NavigatorService {
     public Coordinates toCoordinates(CoordinatesDAO coordinatesDAO) {
         return new Coordinates(coordinatesDAO.getX(), coordinatesDAO.getY());
     }
+
+    @Override
+    public RouteDAO getRouteById(int id) {
+        RouteDAO routeDAO = routeMapper.findRouteById(id);
+        if (routeDAO == null) throw new NoSuchObjException("There is no route with such id!");
+        return routeDAO;
+    }
 }
